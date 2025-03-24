@@ -1,3 +1,30 @@
 body {
     background-color: skyblue;
 }
+
+/* Styles personnalisés pour les tâches */
+.card.border-success {
+    border-color: #28a745 !important; /* Vert Bootstrap */
+    border-width: 2px !important;
+}
+
+.card.border-success:hover {
+    box-shadow: 0 0.5rem 1rem rgba(40, 167, 69, 0.15) !important; /* Ombre verte au survol */
+}
+
+/* Style pour le titre des tâches terminées */
+.card-title.text-decoration-line-through {
+    text-decoration-thickness: 2px !important;
+    text-decoration-color: #28a745 !important;
+}
+
+/* Style pour le badge de statut */
+.badge.bg-success {
+    background-color: #28a745 !important;
+    font-weight: 500;
+}
+
+.badge.bg-primary {
+    background-color: #007bff !important;
+    font-weight: 500;
+}
