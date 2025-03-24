@@ -17,14 +17,19 @@ class Task
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $dueDate = null;
+    #[ORM\Column]
+    private ?bool $isDone = false;
 
     #[ORM\Column]
-    private ?bool $status = false;
+    private ?\DateTimeImmutable $createdAt = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -47,31 +52,31 @@ class Task
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
         return $this;
     }
 
-    public function getDueDate(): ?\DateTimeInterface
+    public function isIsDone(): ?bool
     {
-        return $this->dueDate;
+        return $this->isDone;
     }
 
-    public function setDueDate(\DateTimeInterface $dueDate): static
+    public function setIsDone(bool $isDone): static
     {
-        $this->dueDate = $dueDate;
+        $this->isDone = $isDone;
         return $this;
     }
 
-    public function isStatus(): ?bool
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->status;
+        return $this->createdAt;
     }
 
-    public function setStatus(bool $status): static
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
-        $this->status = $status;
+        $this->createdAt = $createdAt;
         return $this;
     }
 } 

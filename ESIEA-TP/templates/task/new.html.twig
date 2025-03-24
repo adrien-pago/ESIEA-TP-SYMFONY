@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Tâche{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h3 mb-0">
+                <i class="bi bi-plus-circle me-2"></i>Nouvelle Tâche
+            </h1>
+            <a href="{{ path('app_task_index') }}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-2"></i>Retour à la liste
+            </a>
+        </div>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+
+        {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            {{ form_row(form.title) }}
+                            {{ form_row(form.description) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            {{ form_row(form.isDone) }}
+                            <div class="d-grid gap-2 mt-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-save me-2"></i>Créer la tâche
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %} 
